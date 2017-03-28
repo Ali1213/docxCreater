@@ -1,0 +1,31 @@
+{
+  "name": "docxcreater",
+  "version": "1.0.0",
+  "description": "a simple docx generater",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "archiver": "^0.20.0",
+    "xml": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ali1213/docxCreater.git"
+  },
+  "keywords": [
+    "docx",
+    "generaater"
+  ],
+  "author": "ysl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ali1213/docxCreater/issues"
+  },
+  "homepage": "https://github.com/Ali1213/docxCreater#readme"
+}

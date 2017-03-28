@@ -1,0 +1,112 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.5
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'E:\\myWork\\docxCreater',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\Administrator\AppData\Roaming\npm-cache\docxcreater\1.0.0\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\Administrator\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle docxcreater@1.0.0~prepublish: docxcreater@1.0.0
+11 silly lifecycle docxcreater@1.0.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\Administrator\\AppData\\Roaming\\npm-cache\\docxcreater\\1.0.0\\package.tgz',
+12 verbose tar pack   'E:\\myWork\\docxCreater' ]
+13 verbose tarball C:\Users\Administrator\AppData\Roaming\npm-cache\docxcreater\1.0.0\package.tgz
+14 verbose folder E:\myWork\docxCreater
+15 verbose addLocalTarball adding from inside cache C:\Users\Administrator\AppData\Roaming\npm-cache\docxcreater\1.0.0\package.tgz
+16 verbose correctMkdir C:\Users\Administrator\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd docxcreater@1.0.0
+18 verbose afterAdd C:\Users\Administrator\AppData\Roaming\npm-cache\docxcreater\1.0.0\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\Administrator\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\Administrator\AppData\Roaming\npm-cache\docxcreater\1.0.0\package\package.json written
+21 silly publish { name: 'docxcreater',
+21 silly publish   version: '1.0.0',
+21 silly publish   description: 'a simple docx generater',
+21 silly publish   main: 'index.js',
+21 silly publish   directories: { test: 'test' },
+21 silly publish   dependencies: { archiver: '^0.20.0', xml: '^1.0.1' },
+21 silly publish   devDependencies: {},
+21 silly publish   scripts: { test: '' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/Ali1213/docxCreater.git' },
+21 silly publish   keywords: [ 'docx', 'generaater' ],
+21 silly publish   author: { name: 'ysl' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/Ali1213/docxCreater/issues' },
+21 silly publish   homepage: 'https://github.com/Ali1213/docxCreater#readme',
+21 silly publish   readme: '\r\n\r\n\r\n# how to start\r\n\r\n## simple example\r\n\r\nthere is a simple example:\r\n\r\n```javascript\r\nvar d = new Docx();\r\nd.addParagraph(\'there is content\');\r\nd.render(/*filepath*/);\r\n```\r\n\r\nalso, it equals to the next:\r\n```javascript\r\nvar d = new Docx();\r\nd.addParagraph(\'there is content\')\r\n    .render(/*filepath*/);\r\n```\r\n\r\n## something you must know\r\n\r\nIn docx file, the fundamental elements is paragraph and table.\r\nyou can use `d.addParagraph()`to add a paragraph.\r\nyou can use `d.addTable()`to add a table.\r\nIf you want to add a Image or text, you must  addParagraph at first.\r\n\r\n## d.prototype.setPages()\r\n\r\nIf you want to set pages,you must you this;\r\n```javascript\r\nd.setPage({\r\n        type = "", //string \'A3\',\'A4\'\r\n        width = 0,\r\n        height = 0,\r\n        orient = false,\r\n        cols = 1,\r\n        colsSpace = 0,\r\n        pageTop = 0,\r\n        pageRight = 0,\r\n        pageBottom = 0,\r\n        pageLeft = 0,\r\n        header = 0,\r\n        footer = 0,\r\n        gutter = 0\r\n    })\r\n```\r\n\r\n## d.prototype.addParagraph(string,opt);\r\n```\r\nopt\r\n    /*\r\n     * indent:段首缩进字符，默认是0个字符\r\n     * alignment:段落对齐方式，"right","left","center","justified",4选1，默认left\r\n     * */\r\n```\r\n\r\n## d.prototype.addText(string,opt);\r\n```\r\naddText(str,{\r\n        fontSize = 12,\r\n        subScript = false,\r\n        superScript = false,\r\n        bold = false,\r\n        italic = false,\r\n        underline = false,\r\n        strike = false,\r\n    }={})\r\n    //fontSize : number/string 字体大小\r\n    //subScript : boolean 是否是下标\r\n    //superScript : boolean 是否是下标\r\n    //bold : boolean 是否是黑体\r\n    //italic : boolean 是否是下标\r\n    //underline : boolean 是否是下标\r\n    //strike : boolean 是否是下标\r\n```\r\n\r\n\r\n## d.prototype.addLink(string,link);\r\n\r\n## d.prototype.addImage(filepath,width,height,type = "inset");\r\n```\r\n    /*\r\n     * type暂时因为位置的原因无法处理；\r\n     * inset:嵌入\r\n     * square:四周\r\n     * tight:紧密环绕\r\n     * through:穿越型环绕\r\n     * topAndBottom:上下型环绕\r\n     * underText:衬于文字下方\r\n     * aboveText:浮于文字上方；\r\n     * */\r\n```\r\n\r\n\r\n## d.prototype.addTable(options);\r\n```\r\noptions.HTMLTable //string HTML formating table string\r\n```\r\n\r\n\r\n## d.prototype.render(options,cb);\r\ndocx generate.\r\n```\r\noptions:\r\n    creator\r\n    description\r\n    title\r\n    subject\r\n    keywords\r\n    lastModifiedBy\r\n    revision\r\ncb: function\r\n two arguments,first is error,second is result;\r\n```\r\n\r\n\r\n# 更新日志\r\n\r\n+ 2017/3/28\r\n\r\n    - 修复创建段落时入不放入文字会造成的bug\r\n\r\n+ 2017/3/22\r\n\r\n    - 修復addText時設置字體的問題\r\n    - 修复若干小问题\r\n\r\n\r\n+ 2017/3/13\r\n\r\n    - 更新一个可以直接插入合法的xml接口。(!慎用)\r\n    - 支持设置段前段后间距，以及行间距。\r\n\r\n+ 2017/3/10\r\n    - 修正HTML形式转table的bug\r\n    - 临时增加一段直接插入document.xml的obj接口,方便将试卷密封圈的文本插进去\r\n    - 增加设置页面的 上下左右的边距\r\n    - 增加table的边框属性,暂未支持设置接口\r\n\r\n\r\n+ 2017/3/9\r\n    - 增加HTML形式的table转成table\r\n    - 增加对字体上下标和黑体，斜体，带下划线，带方框的支持\r\n    - 增加简单分栏，增加页面设置（A4，A3）\r\n+ 2017/3/7\r\n    - 增加对段落字体大小的统一设置\r\n+ 2017/3/1\r\n    - 支持JPG,JPEG图片\r\n    - 支持PNG图片\r\n    - 支持gif图片\r\n    - 支持段落的对齐方式 "right","left","center","justified";\r\n    - 图片的几种方式:嵌入:segments;四周环绕:square;紧密环绕:tight;穿越型环绕:through;上下型环绕:topAndBottom;衬于文字下方:underText;衬于文字上方:aboveText;然而目前由于无法定位图片和文字的位置，所以这些功能暂时无法完善\r\n+ 2017/2/28\r\n    - 增加段落方法createParagraph\r\n    - 对已增加的段落增加文字addText\r\n    - 增加对超链接文字的支持\r\n\r\n\r\n\r\n\r\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '342583eca7861f380239c3bf7efb19b27a4ba6f4',
+21 silly publish   _id: 'docxcreater@1.0.0',
+21 silly publish   _shasum: '3ee29a0a83e454181463f0eefa395519cb1b5b88',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name docxcreater
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'docxcreater',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'docxcreater',
+26 silly mapToRegistry   name: 'docxcreater',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/docxcreater
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading C:\Users\Administrator\AppData\Roaming\npm-cache\docxcreater\1.0.0\package.tgz
+30 verbose request uri https://registry.npmjs.org/docxcreater
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 15:54:09
+33 verbose request using bearer token for auth
+34 verbose request id c2366f341437a37d
+35 http request PUT https://registry.npmjs.org/docxcreater
+36 http 403 https://registry.npmjs.org/docxcreater
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Tue, 28 Mar 2017 07:54:11 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-nrt6125-NRT',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1490687650.972923,VS0,VE1013',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating C:\Users\Administrator\AppData\Roaming\npm-cache\registry.npmjs.org\docxcreater on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.0." : docxcreater
+40 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:290:14)
+40 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+40 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid docxcreater
+43 verbose cwd E:\myWork\docxCreater
+44 error Windows_NT 10.0.14393
+45 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error node v6.9.5
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.0." : docxcreater
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

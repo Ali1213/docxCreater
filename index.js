@@ -67,13 +67,13 @@ class Docx {
             'A4':[11906,16838],
             'A3':[16838,23811]
         }
-        
+
     }
     //下面统一处理段落样式
     /*
-    * indent:段首缩进字符，默认是0个字符
-    * alignment:段落对齐方式，"right","left","center","justified",4选1，默认left
-    * */
+     * indent:段首缩进字符，默认是0个字符
+     * alignment:段落对齐方式，"right","left","center","justified",4选1，默认left
+     * */
     addParagraph(str,{
         indent = 0,
         alignment = 'left'
@@ -132,6 +132,12 @@ class Docx {
         }
 
 
+        if(typeof fontSize !== 'number'){
+            fontSize = this['fontSizeType'][fontSize] ? this['fontSizeType'][fontSize] : 12;
+        }
+        obj.fontSize(fontSize);
+
+
         if(subScript){
             obj.subScript();
         }
@@ -162,13 +168,13 @@ class Docx {
 
 
     /*
-    * 页面样式配置
-    * 1参为w:pgSz的设置，目前已知为页面大小，页面方向
-    *
-    *
-    * type优先,目前是A3,A4
-    *
-    * */
+     * 页面样式配置
+     * 1参为w:pgSz的设置，目前已知为页面大小，页面方向
+     *
+     *
+     * type优先,目前是A3,A4
+     *
+     * */
 
     setPage({
         type = "",
@@ -200,7 +206,7 @@ class Docx {
             //下一条在A3时被添加，不知道有什么用
             this.document.setCode(8)
         }
-        
+
         if(orient){
             this.document.setOrient(true)
         }
@@ -269,7 +275,7 @@ class Docx {
     insertDocument(xml){
 
         if(typeof xml === 'string'){
-            if(this.last){
+            if(!this.last){
                 this.addParagraph();
             }
 
@@ -284,7 +290,7 @@ class Docx {
         return this;
     }
 
-    //做一件更污的事情，允许往document.body后面 插入xml
+    //做一件更污的事情，允许往document.body最前面 插入xml
     insertDocumentXML(str){
         this.appendXML['document'] = str;
         return this;
@@ -293,29 +299,29 @@ class Docx {
 
     //处理图片样式
     /*
-    * type暂时因为位置的原因无法处理；
-    * inset:嵌入
-    * square:四周
-    * tight:紧密环绕
-    * through:穿越型环绕
-    * topAndBottom:上下型环绕
-    * underText:衬于文字下方
-    * aboveText:浮于文字上方；
-    * */
+     * type暂时因为位置的原因无法处理；
+     * inset:嵌入
+     * square:四周
+     * tight:紧密环绕
+     * through:穿越型环绕
+     * topAndBottom:上下型环绕
+     * underText:衬于文字下方
+     * aboveText:浮于文字上方；
+     * */
     addImage(filepath,width,height,type = "inset"){
         this.last.addText(images(filepath,width,height,this.rels,this.files).layout(type));
         return this;
     }
 
     /*
-    * 1.创建表格
-    * 2.处理基本的样式
-    * 3.设定行和列的数量
-    * 4.单元格合并的设定
-    * */
+     * 1.创建表格
+     * 2.处理基本的样式
+     * 3.设定行和列的数量
+     * 4.单元格合并的设定
+     * */
     /*
-    *
-    * */
+     *
+     * */
     addTable({
         colNum = 3,
         rowNom = 3,
@@ -332,13 +338,13 @@ class Docx {
             return this;
         }
     }
-/*    createRow(){
-        return table.createRow();
-    }
+    /*    createRow(){
+     return table.createRow();
+     }
 
-    createCell(){
-        return table.createCell();
-    }*/
+     createCell(){
+     return table.createCell();
+     }*/
 
     createMaxRightTabStop(){
         return Docx.createTabTemplate('right', 'RIGHT_MARGIN');
@@ -363,7 +369,7 @@ class Docx {
         let my = this;
 
         let body = my.document['w:document'][1]['w:body'];
-        
+
         //我TM也不知道这个有什么用
         my.content = my.content.map((item,i)=>{
             return JSON.parse(JSON.stringify(item).replace('RIGHT_MARGIN','9026'));
@@ -385,7 +391,6 @@ class Docx {
         };
         packer(fs.createWriteStream(my.output),officeFile,cb);
     }
-
 
 
     /*静态方法*/
@@ -415,13 +420,13 @@ class Docx {
         }
         return fontSize;
     };
-/*    static likeArray2Array(obj){
-        let arr = [];
-        for(let i=0;i<obj.length;i++){
-            arr.push(obj[i]);
-        }
-        return arr;
-    };*/
+    /*    static likeArray2Array(obj){
+     let arr = [];
+     for(let i=0;i<obj.length;i++){
+     arr.push(obj[i]);
+     }
+     return arr;
+     };*/
 
 
     static converHTMLTable (HTMLTable){
@@ -509,7 +514,7 @@ class Docx {
         if(p['setSpace']){
             p.setSpace(styleObj)
         }
-        
+
     }
 
     static convertXML2XMLObj(xml){
