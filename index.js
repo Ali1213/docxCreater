@@ -370,6 +370,12 @@ class Docx {
 
         let body = my.document['w:document'][1]['w:body'];
 
+        if(typeof options === 'function'){
+            cb = options;
+            options = {};
+        }
+
+
         //我TM也不知道这个有什么用
         my.content = my.content.map((item,i)=>{
             return JSON.parse(JSON.stringify(item).replace('RIGHT_MARGIN','9026'));

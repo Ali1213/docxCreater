@@ -1,7 +1,7 @@
 {
   "name": "docxcreater",
-  "version": "1.0.0",
-  "description": "a simple docx generater",
+  "version": "1.0.2",
+  "description": "a simple docx generater use chain",
   "main": "index.js",
   "directories": {
     "test": "test"

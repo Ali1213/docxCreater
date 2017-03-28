@@ -8,16 +8,16 @@
 there is a simple example:
 
 ```javascript
-var d = new Docx();
+var d = new Docx(/*{filepath:somewhere}*/);
 d.addParagraph('there is content');
-d.render(/*filepath*/);
+d.render();
 ```
 
 also, it equals to the next:
 ```javascript
-var d = new Docx();
+var d = new Docx(/*{filepath:somewhere}*/);
 d.addParagraph('there is content')
-    .render(/*filepath*/);
+    .render();
 ```
 
 ## something you must know
@@ -102,7 +102,7 @@ options.HTMLTable //string HTML formating table string
 
 
 ## d.prototype.render(options,cb);
-docx generate.
+docx generate
 ```
 options:
     creator
